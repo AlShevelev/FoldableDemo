@@ -10,7 +10,6 @@ import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class ControlPanelViewModel
@@ -29,9 +28,5 @@ constructor(
         initialValue = null
     )
 
-    fun selectColor(color: ColorCode) {
-        viewModelScope.launch {
-            repository.updateColor(color)
-        }
-    }
+    fun selectColor(color: ColorCode) = repository.updateColor(color)
 }

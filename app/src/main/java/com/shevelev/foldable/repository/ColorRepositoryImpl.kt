@@ -16,6 +16,6 @@ internal class ColorRepositoryImpl @Inject constructor() : ColorRepository {
             )
         )
 
-    override suspend fun updateColor(color: ColorCode) =
+    override fun updateColor(color: ColorCode) =
         colorState.update { it.copy(selectedColor = color) }
 }

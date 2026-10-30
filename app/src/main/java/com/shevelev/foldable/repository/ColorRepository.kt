@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 internal interface ColorRepository {
     val colorState: Flow<ColorsState>
 
-    suspend fun updateColor(color: ColorCode)
+    fun updateColor(color: ColorCode)
 }
