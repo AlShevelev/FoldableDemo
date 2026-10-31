@@ -84,7 +84,6 @@ internal fun MainScreen(
         ) {
             ControlPanel(hingeType)
         }
-
     }
 }
 
@@ -100,8 +99,7 @@ private fun Modifier.alignAboveHinge(): Modifier = this then
                 // Constrain the height of the composable to the hinge top (if available)
                 val childConstraints = if (hingeTop.isNaN()) {
                     constraints
-                } else
-                {
+                } else {
                     Constraints(maxHeight = hingeTop.roundToInt()).constrain(constraints)
                 }
 
@@ -141,8 +139,7 @@ private fun Modifier.alignToLeftOfHinge(): Modifier = this then
                 // Constrain the height of the composable to the hinge top (if available)
                 val childConstraints = if (hingeLeft.isNaN()) {
                     constraints
-                } else
-                {
+                } else {
                     Constraints(maxWidth = hingeLeft.roundToInt()).constrain(constraints)
                 }
 

@@ -75,7 +75,11 @@ private fun ColorSelectorButton(
     Spacer(
         modifier
             .clip(CircleShape)
-            .border(4.dp, if (selected) Color.DarkGray else Color.Transparent, CircleShape)
+            .border(
+                width = 4.dp,
+                color = if (selected) Color.DarkGray else Color.Transparent,
+                shape = CircleShape,
+            )
             .background(color = color.uiColor)
             .clickable(onClick = onClick)
     )
