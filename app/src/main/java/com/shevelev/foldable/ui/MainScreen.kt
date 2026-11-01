@@ -41,15 +41,15 @@ internal fun MainScreen(
     lookaheadScope: LookaheadScope? = LocalLookaheadScope.current,
 ) {
     val foldingFeatures by collectFoldingFeaturesAsState()
-
     val fold = foldingFeatures.firstOrNull()
+    val isHalfOpened = fold?.state == FoldingFeature.State.HALF_OPENED
 
     Box(modifier.safeDrawingPadding()) {
         MainArea(
             modifier = Modifier
                 .fillMaxSize()
                 .then(
-                    if (fold?.state == FoldingFeature.State.HALF_OPENED) {
+                    if (isHalfOpened) {
                         when (hingeType) {
                             HingeType.HORIZONTAL -> Modifier.alignAboveHinge()
                             HingeType.VERTICAL -> Modifier.alignToLeftOfHinge()
@@ -65,7 +65,7 @@ internal fun MainScreen(
         )
 
         AnimatedVisibility(
-            visible = fold?.state == FoldingFeature.State.HALF_OPENED,
+            visible = isHalfOpened,
             enter = fadeIn() + when (hingeType) {
                 HingeType.HORIZONTAL -> slideInVertically { it / 2 }
                 HingeType.VERTICAL -> slideInHorizontally { it / 2 }
